@@ -1,0 +1,60 @@
+
+.landing-content {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: gradientAnimation 10s ease infinite;
+    background-size: 200% 200%;
+    background: linear-gradient(135deg, olive, #50C878); /* Starting colors for olive and emerald */
+  }
+  
+  .center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 48px;
+    color: rgb(8, 8, 8);
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .typewriter {
+    display: inline-block;
+    overflow: hidden;
+    border-right: .15em solid white;
+    white-space: nowrap;
+    letter-spacing: .15em;
+    animation: typing 3.5s steps(30, end), blink-caret .75s step-end infinite;
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: white; }
+  }
+  
+  .blinking-dot {
+    animation: blink-dot 1s infinite;
+  }
+  
+  @keyframes blink-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  /* Keyframes for moving gradient */
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  

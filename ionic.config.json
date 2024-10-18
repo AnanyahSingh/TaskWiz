@@ -1,0 +1,7 @@
+{
+  "name": "TaskWiz",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
