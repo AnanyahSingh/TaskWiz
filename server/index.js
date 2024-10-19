@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const express = require('express');
-const Task = require('./models/task.model.js');
-const app = express();
 const taskRoute = require('./routes/task.route.js');
 const authRoute = require('./routes/auth.route.js'); // Import auth routes
+const app = express();
 
 // Middleware
 app.use(express.json());
@@ -30,6 +29,6 @@ mongoose.connect("mongodb+srv://ananya25622singh:se4CBCjFM9NihGWb@ionicdb.olf5l.
   });
 
 // Start server
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+app.listen(8100, () => {
+  console.log('Server is running on port 8100');
 });

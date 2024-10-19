@@ -1,19 +1,27 @@
 const express = require("express");
-const Task = require('../models/task.model.js');
+const {
+    getTasks,
+    getTask,
+    createTask,
+    updateTask,
+    deleteTask
+} = require('../controllers/task.controller.js');
+
 const router = express.Router();
 
+// Route to get all tasks
+router.get('/', getTasks);
 
-const{getTasks, getTask, createTask, 
-    updateTask, deleteTask} = require('../controllers/task.controller.js');
-
-router.get('/',getTasks);
+// Route to get a single task by id
 router.get("/:id", getTask);
 
-router.post("/",createTask);
+// Route to create a new task
+router.post("/", createTask);
 
-router.post(":/id", updateTask);
+// Route to update a task by id
+router.put("/:id", updateTask);  // Changed to PUT for updating
 
-router.delete(":/id", deleteTask);
+// Route to delete a task by id
+router.delete("/:id", deleteTask);  // Fixed the route syntax
 
-module.exports= router;
-
+module.exports = router;
