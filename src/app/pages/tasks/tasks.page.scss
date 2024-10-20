@@ -1,0 +1,43 @@
+.menu-button {
+    --background: #f8f9fa;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .welcome {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .tasks {
+    padding: 10px;
+  }
+  
+  ion-card {
+    margin: 15px;
+  }
+  
+  ion-card:nth-child(1) {
+    background-color: #f5f5dc;
+  }
+  
+  ion-card:nth-child(2) {
+    background-color: #ffe4e1;
+  }
+  
+  ion-card:nth-child(3) {
+    background-color: #d3d3d3;
+  }
+  
+  ion-card-content ion-input {
+    margin-bottom: 10px;
+  }
+  
+  ion-icon {
+    font-size: 20px;
+  }
+  
+  ion-button {
+  --background: #3880ff;
+}

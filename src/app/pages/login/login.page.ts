@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
 
       if (user) {
         loading.dismiss();
-        this.router.navigate(['/home']);
+        this.router.navigate(['/tasks']);
       } else {
         console.log('Provide correct values');
       }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { Router } from '@angular/router';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-reset-password',
@@ -18,7 +19,7 @@ export class ResetPasswordPage implements OnInit {
   async resetPassword(){
     this.authService.resetPassword(this.email).then(()=>
     {
-    console.log('reset link sent');
+    console.log('reset link sent')
     this.route.navigate(['/login'])
     }
     ).catch((error) => {
