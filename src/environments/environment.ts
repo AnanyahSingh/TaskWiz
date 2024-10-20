@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  firebaseConfig : {
+  production: false,  // Change this to true in environment.prod.ts
+  firebaseConfig: {
     apiKey: "AIzaSyC97GefCV_5FmHI8caKHjeRbRCmxESaEN0",
     authDomain: "taskwiz-3233c.firebaseapp.com",
     projectId: "taskwiz-3233c",
