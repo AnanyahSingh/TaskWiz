@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const taskRoute = require('./routes/task.route.js');
-const authRoute = require('./routes/auth.route.js'); // Import auth routes
+//const authRoute = require('./routes/auth.route.js'); // Import auth routes
 const app = express();
 
 // Middleware
@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/tasks', taskRoute);
 
 // Auth Routes
-app.use('/api/auth', authRoute);  // Add this line to handle authentication routes
+//app.use('/api/auth', authRoute);  // Add this line to handle authentication routes
 
 // Root route for testing
 app.get('/', (req, res) => {

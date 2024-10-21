@@ -1,7 +1,6 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Welcome, {{ username }}!</ion-title>
-    <!-- Button to toggle the sidebar -->
     <ion-buttons slot="start">
       <ion-button (click)="openSidebar()">
         <ion-icon name="menu-outline"></ion-icon>
@@ -20,13 +19,11 @@
 
     <ion-content>
       <ion-list>
-        <!-- Add Task Icon -->
         <ion-item (click)="addTask()">
           <ion-icon slot="start" name="add-circle-outline"></ion-icon>
           <ion-label>Add Task</ion-label>
         </ion-item>
 
-        <!-- Go Back to Landing Page Icon -->
         <ion-item [routerLink]="['/landing']">
           <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
           <ion-label>Go to Landing Page</ion-label>
@@ -37,28 +34,32 @@
 
   <div id="main-content">
     <ion-grid>
-      <!-- Task Cards Section -->
       <ion-row>
-        <ion-col size="12" *ngFor="let task of tasks">
-          <ion-card color="light">
-            <ion-card-header>
-              <ion-card-title>{{ task.title }}</ion-card-title>
-            </ion-card-header>
+        <ion-col size="12" *ngFor="let task of tasks; let i = index">
+          <ion-card color="light" style="background-color: #4e82b2;">
             <ion-card-content>
-              <p>{{ task.description }}</p>
-              <ion-chip color="tertiary">{{ task.status }}</ion-chip>
-              <!-- Show save button and delete icon when typing -->
-              <ion-input
-                [(ngModel)]="task.title"
-                (ionInput)="showActions = true"
-              ></ion-input>
-              <ion-input
-                [(ngModel)]="task.description"
-                (ionInput)="showActions = true"
-              ></ion-input>
+              <ion-item>
+                <ion-label position="stacked">Title</ion-label>
+                <ion-input [(ngModel)]="task.title" (ionInput)="onInputChange(i)"></ion-input>
+              </ion-item>
 
-              <!-- Save Button and Delete Icon -->
-              <div *ngIf="showActions" style="margin-left: 50% ; padding: 0;" >
+              <ion-item>
+                <ion-label position="stacked">Description</ion-label>
+                <ion-textarea
+                  [(ngModel)]="task.description"
+                  (ionInput)="onInputChange(i)"
+                ></ion-textarea>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">Status</ion-label>
+                <ion-select [(ngModel)]="task.status" (ionChange)="onInputChange(i)">
+                  <ion-select-option value="Pending">Pending</ion-select-option>
+                  <ion-select-option value="In Progress">In Progress</ion-select-option>
+                  <ion-select-option value="Completed">Completed</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <div *ngIf="task.showActions" style="margin-left: 50%;">
                 <ion-button (click)="saveTask(task)" color="success">Save</ion-button>
                 <ion-button color="danger" (click)="deleteTask(task)" fill="clear">
                   <ion-icon name="trash-outline" style="font-size: 24px"></ion-icon>

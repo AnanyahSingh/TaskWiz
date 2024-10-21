@@ -1,29 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/authentication.service';
 import { Router } from '@angular/router';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { AuthenticationService } from 'src/app/authentication.service';
 
 @Component({
-  selector: 'app-reset-password',
-  templateUrl: './reset-password.page.html',
+  selector: 'app-reset',
+  templateUrl: './reset-password.page.html',  // Corrected template URL
   styleUrls: ['./reset-password.page.scss'],
 })
-export class ResetPasswordPage implements OnInit {
-  email:any
+export class ResetPage implements OnInit {
 
-  constructor(public route: Router, public authService:AuthenticationService) { }
+  email: any;
 
-  ngOnInit() {
-  }
+  constructor(public route: Router, public authService: AuthenticationService) { }
 
-  async resetPassword(){
-    this.authService.resetPassword(this.email).then(()=>
-    {
-    console.log('reset link sent')
-    this.route.navigate(['/login'])
-    }
-    ).catch((error) => {
+  ngOnInit() {}
+
+  async resetPassword() {
+    this.authService.resetPassword(this.email).then(() => {
+      console.log('Reset link sent');
+      this.route.navigate(['/home']);
+    }).catch((error) => {
       console.log(error);
-    })
+    });
   }
 }
