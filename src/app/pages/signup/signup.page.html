@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="feedback-page">
   <div class="header">
     <ion-title class="title">Welcome!</ion-title>
     <p class="subtitle">Sign Up to create your account</p>
@@ -11,7 +11,7 @@
         </ion-item>
         <div *ngIf="this.regForm.controls?.['fullname'].touched && this.regForm.controls?.['fullname'].invalid">
           <ion-text *ngIf="errorControl['fullname']?.errors?.['required']">
-            Fullname is required
+            Full name is required
           </ion-text>
         </div>
         <ion-item>

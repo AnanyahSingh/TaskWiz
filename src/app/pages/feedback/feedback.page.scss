@@ -1,0 +1,43 @@
+.feedback-page {
+    --background: none;
+    background-image: url('https://images.pexels.com/photos/7564196/pexels-photo-7564196.jpeg?auto=compress&cs=tinysrgb&w=600');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  
+  .feedback-container {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    width: 90%;
+    max-width: 400px;
+    margin-top: 40%;
+    margin-left: 5%;
+  }
+  
+  .feedback-container h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+  
+  ion-textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  
+  ion-button {
+    background-color: #5061bc;
+    color: white;
+    width: 100%;
+    border-radius: 8px;
+  }
+  

@@ -38,7 +38,7 @@ export class SignupPage implements OnInit {
       ],
     });
   }
-
+  
   get errorControl() {
     return this.regForm?.controls;
   }
@@ -55,7 +55,7 @@ export class SignupPage implements OnInit {
 
       if (user) {
         loading.dismiss();
-        this.router.navigate(['/home']);
+        this.router.navigate(['/login']);
       } else {
         console.log('Provide correct values');
       }

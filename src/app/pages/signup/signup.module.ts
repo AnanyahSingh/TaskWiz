@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { AuthenticationService } from 'src/app/authentication.service'; 
 import { IonicModule } from '@ionic/angular';
 
 import { SignupPageRoutingModule } from './signup-routing.module';
@@ -16,6 +16,7 @@ import { SignupPage } from './signup.page';
     ReactiveFormsModule,
     SignupPageRoutingModule
   ],
-  declarations: [SignupPage]
+  declarations: [SignupPage],
+  providers: [AuthenticationService],
 })
 export class SignupPageModule {}

@@ -1,43 +1,72 @@
-.menu-button {
-    --background: #f8f9fa;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
-  
-  .welcome {
-    text-align: center;
-    margin-top: 30px;
-  }
-  
-  .tasks {
-    padding: 10px;
-  }
-  
-  ion-card {
-    margin: 15px;
-  }
-  
-  ion-card:nth-child(1) {
-    background-color: #f5f5dc;
-  }
-  
-  ion-card:nth-child(2) {
-    background-color: #ffe4e1;
-  }
-  
-  ion-card:nth-child(3) {
-    background-color: #d3d3d3;
-  }
-  
-  ion-card-content ion-input {
-    margin-bottom: 10px;
-  }
-  
-  ion-icon {
-    font-size: 20px;
-  }
-  
-  ion-button {
-  --background: #3880ff;
+.tasks-page {
+  --background: none;
+  background-image: url('https://images.pexels.com/photos/7718677/pexels-photo-7718677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  background-size: cover;
+  background-position: center;
+  padding: 20px 0;
+}
+.task-card {
+  background-color: lightgoldenrodyellow;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+ion-grid {
+  width: 100%;
+}
+
+ion-row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Add consistent spacing between rows */
+}
+
+.flip-card {
+  position: relative;
+  width: 100%;
+  perspective: 1000px;
+  margin-bottom: 20px;
+  transition: margin-bottom 0.6s ease;
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+}
+
+.flip-card-front {
+  transform: rotateY(0deg);
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.flipped .flip-card-front {
+  transform: rotateY(-180deg);
+}
+
+.flipped .flip-card-back {
+  transform: rotateY(0deg);
+}
+
+.flipped {
+  z-index: 1; /* Ensure the flipped card is on top */
+  margin-bottom: 50px; /* Keep other tasks underneath */
+}
+
+.flip-card-front ion-checkbox {
+  pointer-events: none; /* Disable interaction with checkbox on the flip front side */
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }

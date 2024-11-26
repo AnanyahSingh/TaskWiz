@@ -31,6 +31,11 @@ const routes: Routes = [
     path: 'tasks',
     loadChildren: () => import('./pages/tasks/tasks.module').then( m => m.TasksPageModule)
   },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },
+
 ];
 
 @NgModule({

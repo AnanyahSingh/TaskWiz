@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Welcome, {{ username }}!</ion-title>
+    <ion-title><i>Welcome!</i></ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="openSidebar()">
         <ion-icon name="menu-outline"></ion-icon>
@@ -9,64 +9,112 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="tasks-page">
+  <!-- Sidebar Menu -->
   <ion-menu side="start" menuId="main-menu" contentId="main-content">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
-
     <ion-content>
       <ion-list>
         <ion-item (click)="addTask()">
           <ion-icon slot="start" name="add-circle-outline"></ion-icon>
           <ion-label>Add Task</ion-label>
         </ion-item>
-
-        <ion-item [routerLink]="['/landing']">
-          <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
-          <ion-label>Go to Landing Page</ion-label>
+        <ion-item [routerLink]="['/feedback']">
+          <ion-icon slot="start" name="heart"></ion-icon>
+          <ion-label>Feedback</ion-label>
         </ion-item>
       </ion-list>
+      <ion-item [routerLink]="['/landing']">
+        <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+        <ion-label>Log Out</ion-label>
+      </ion-item>
     </ion-content>
   </ion-menu>
 
-  <div id="main-content">
+  <!-- Main Content -->
+  <div id="main-content" (click)="flipAllCardsBack($event)">
     <ion-grid>
       <ion-row>
         <ion-col size="12" *ngFor="let task of tasks; let i = index">
-          <ion-card color="light" style="background-color: #4e82b2;">
-            <ion-card-content>
-              <ion-item>
-                <ion-label position="stacked">Title</ion-label>
-                <ion-input [(ngModel)]="task.title" (ionInput)="onInputChange(i)"></ion-input>
-              </ion-item>
+          <div
+            class="flip-card"
+            [class.flipped]="task.isFlipped"
+            (click)="flipCard(i, $event)">
+            <!-- Front Face -->
+            <div class="flip-card-front">
+              <ion-card color="light" style="background-color: tan;">
+                <ion-card-content>
+                  <ion-item>
+                    <ion-checkbox [(ngModel)]="task.isDone" (click)="preventFlip($event)"></ion-checkbox>
+                    <h2>{{ task.title }}</h2>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </div>
 
-              <ion-item>
-                <ion-label position="stacked">Description</ion-label>
-                <ion-textarea
-                  [(ngModel)]="task.description"
-                  (ionInput)="onInputChange(i)"
-                ></ion-textarea>
-              </ion-item>
+            <!-- Back Face -->
+            <div class="flip-card-back">
+              <ion-card color="light" style="background-color: teal">
+                <ion-card-content>
+                  <ion-item>
+                    <ion-label position="stacked">Title</ion-label>
+                    <ion-input
+                      [(ngModel)]="task.title"
+                      (click)="preventFlip($event)"
+                      (ionInput)="onInputChange(i)"
+                    ></ion-input>
+                  </ion-item>
 
-              <ion-item>
-                <ion-label position="stacked">Status</ion-label>
-                <ion-select [(ngModel)]="task.status" (ionChange)="onInputChange(i)">
-                  <ion-select-option value="Pending">Pending</ion-select-option>
-                  <ion-select-option value="In Progress">In Progress</ion-select-option>
-                  <ion-select-option value="Completed">Completed</ion-select-option>
-                </ion-select>
-              </ion-item>
-              <div *ngIf="task.showActions" style="margin-left: 50%;">
-                <ion-button (click)="saveTask(task)" color="success">Save</ion-button>
-                <ion-button color="danger" (click)="deleteTask(task)" fill="clear">
-                  <ion-icon name="trash-outline" style="font-size: 24px"></ion-icon>
-                </ion-button>
-              </div>
-            </ion-card-content>
-          </ion-card>
+                  <ion-item>
+                    <ion-label position="stacked">Description</ion-label>
+                    <ion-textarea
+                      [(ngModel)]="task.description"
+                      (click)="preventFlip($event)"
+                      (ionInput)="onInputChange(i)"
+                    ></ion-textarea>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label position="stacked">Reminder</ion-label>
+                    <ion-button
+                      expand="block"
+                      fill="outline"
+                      (click)="openCalendar('reminder', i)"
+                    >
+                      {{ task.reminder || 'Set Reminder' }}
+                    </ion-button>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label position="stacked">Due Date</ion-label>
+                    <ion-button
+                      expand="block"
+                      fill="outline"
+                      (click)="openCalendar('dueDate', i)"
+                    >
+                      {{ task.dueDate || 'Set Due Date' }}
+                    </ion-button>
+                  </ion-item>
+
+                  <div class="action-buttons">
+                    <ion-button (click)="saveTask(task)" color="success">
+                      Save
+                    </ion-button>
+                    <ion-button
+                      color="danger"
+                      (click)="deleteTask(task)"
+                      fill="clear">
+                      <ion-icon name="trash-outline"></ion-icon>
+                    </ion-button>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>

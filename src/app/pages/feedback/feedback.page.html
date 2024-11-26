@@ -1,0 +1,23 @@
+
+
+<ion-content [fullscreen]="true" class="feedback-page">
+  <div class="feedback-container">
+    <h2>We value your feedback</h2>
+    <ion-textarea style="color: black;"
+      placeholder="Write your feedback here..."
+      rows="8" 
+      [(ngModel)]="userFeedback"
+    ></ion-textarea>
+    <ion-button (click)="submitFeedback()">Submit</ion-button>
+  </div>
+  <ion-fab vertical="bottom" horizontal="start" style="margin-bottom: 30px">
+    <ion-fab-button [routerLink]="['/tasks']">
+      <ion-icon name="chevron-back"></ion-icon> 
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="end" style="margin-bottom: 30px">
+    <ion-fab-button [routerLink]="['/landing']">
+      <ion-icon name="chevron-forward"></ion-icon> 
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
